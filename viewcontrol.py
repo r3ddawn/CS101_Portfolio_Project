@@ -2,8 +2,10 @@
 # eric johnson
 
 class ViewControl:
+    victory = False
+
     def __init__(self):
-        self.boardstate = []
+        self.boardstate = [["[ ] [ ] [ ] [ ] [ ]", ""], ["[ ] [ ] [ ] [ ] [ ]", ""], ["[ ] [ ] [ ] [ ] [ ]", ""], ["[ ] [ ] [ ] [ ] [ ]", ""], ["[ ] [ ] [ ] [ ] [ ]", ""], ["[ ] [ ] [ ] [ ] [ ]", ""]]
 
     # Game into rows, breaks up terminal to make it more readable
     def game_intro(self):
@@ -26,11 +28,13 @@ class ViewControl:
                 letter_check.append("[X]")
             else:
                 letter_check.append("[ ]")
-        self.boardstate.append([letter_check , solution])
+        self.boardstate[guess_num] = [letter_check , word]
+        if word == solution:
+            self.victory = True
         return letter_check
 
     def display_boardstate(self):
         print("\n")
-        for x in range(0, 1, 1):
+        for x in range(0, 6, 1):
             print(str(self.boardstate[x][0]) + " -> " + str(self.boardstate[x][1]))
         print("\n")
