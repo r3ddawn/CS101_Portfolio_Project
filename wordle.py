@@ -3,10 +3,16 @@
 # feb 17, 2022
 
 from viewcontrol import *
+import datetime
 
-todays_word = "shake"
 word_list = ["shape", "shake", "shale", "shame", "shave", "shade"]
 
+
+def get_daily_word_number():
+    creation = datetime.datetime(2022, 2, 17)
+    today = datetime.datetime.now()
+    delta = today - creation
+    return delta.days
 
 # Getting users guess and making sure it is in the word list
 def input_guess():
@@ -21,7 +27,7 @@ def input_guess():
             print("Word not in list")
     return user_guess
 
-
+todays_word = word_list[get_daily_word_number()]
 game_session = ViewControl()
 game_session.game_intro()
 
